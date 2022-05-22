@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function myFunction() {
+            const es = new EventSource('./events.php');
+            es.addEventListener('message', e => {
+                const { time, word } = JSON.parse(e.data);
+                // sample.appendChild(document.createElement('li')).textContent = `${time} ${word}`;
+                sample.innerHTML = `<li>${time} ${word}</li>`;
+            });
+        }
+        // document.addEventListener('DOMContentLoaded', e => 
+        // document.addEventListener('phalcon-message', e => {
+            // const es = new EventSource('./events.php');
+            // es.addEventListener('message', e => {
+            //     const { time, word } = JSON.parse(e.data);
+            //     // sample.appendChild(document.createElement('li')).textContent = `${time} ${word}`;
+            //     sample.innerHTML = `<li>${time} ${word}</li>`;
+            // });
+        // });
+    </script>
+</head>
+<body>
+    <button onclick="myFunction()">開始</button>
+    <ul id="sample"></ul>
+</body>
+</html>
