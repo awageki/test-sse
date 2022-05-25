@@ -1,3 +1,3 @@
 <?php
 
-echo 'hello';
+apcu_add('pages', '2');
